@@ -1,0 +1,24 @@
+steps:
+- name: 'bash'
+  id: A
+  args:
+   - 'sleep'
+   - '10'
+- name: 'bash'
+  id: B
+  args:
+   - 'sleep'
+   - '20'
+  waitFor: ['A']
+- name: 'bash'
+  id: C
+  args:
+  - 'sleep'
+  - '20'
+  waitFor: ['A']
+- name: 'bash'
+  id: D
+  args:
+  - 'sleep'
+  - '30'
+  waitFor: ['B', 'C']

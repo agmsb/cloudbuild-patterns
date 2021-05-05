@@ -1,0 +1,5 @@
+steps:
+- name: 'gcr.io/cloud-builders/curl'
+  args: ['10.138.15.198:80']
+options:
+  workerPool: 'projects/agmsb-k8s/locations/us-west1/workerPools/loop-0'

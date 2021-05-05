@@ -1,0 +1,22 @@
+steps:
+- name: 'bash'
+  id: bash-1
+  args:
+   - 'sleep'
+   - '30'
+
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  id: child-build
+  entrypoint: 'gcloud'
+  args:
+  - 'builds'
+  - 'submit'
+  - '--config'
+  - './child-build.yaml'
+  waitFor: ['-']
+
+- name: 'bash'
+  args:
+   - 'sleep'
+   - '30'
+  waitFor: ['child-build']
